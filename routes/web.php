@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,13 +13,27 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+
+
 Auth::routes();
 
+
 Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function () {
+    // Admin Dashboard
     Route::get('/', 'HomeController@index')->name('dashboard');
-    //Route::resource('/post', 'PostController');
+    // Admin posts
+    Route::resource('posts', 'PostController')->parameters([
+        'posts' => 'post:slug'
+    ]);
 });
 
-Route::get('{any?}', function() {
-    return view('guest.home');
-})->where('any', '.*');
+// inseriamola come ultima rotta
+// alla fine del file web.php
+Route::get("{any?}", function () {
+    return view("guest.home");
+})->where("any", ".*");
+
+
+/* 
+
+*/

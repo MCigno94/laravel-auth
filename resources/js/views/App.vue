@@ -1,15 +1,15 @@
 <template>
     
     <div>
-        <h1>Work in Progres</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt similique quis fugit consequuntur deserunt voluptas magnam voluptate iste, animi voluptates.</p>
+        <work-in-progress></work-in-progress>
     </div>
 
 </template>
 
 <script>
+import WorkInProgress from '../components/WorkInProgress.vue'
 export default {
     name: 'App',
-    components: {}
+    components: {WorkInProgress}
 }
 </script>
